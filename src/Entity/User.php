@@ -107,6 +107,26 @@ class User implements UserInterface, \Serializable
     {
     }
 
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->isActive;
+    }
+
     public function setProfile(UserProfile $profile): void
     {
         $profile->setUser($this);
@@ -117,6 +137,7 @@ class User implements UserInterface, \Serializable
     public function serialize()
     {
         return serialize(array(
+            $this->isActive,
             $this->id,
             $this->username,
             $this->password
@@ -127,6 +148,7 @@ class User implements UserInterface, \Serializable
     public function unserialize($serialized)
     {
         list (
+            $this->isActive,
             $this->id,
             $this->username,
             $this->password
