@@ -38,19 +38,49 @@ class User implements UserInterface, \Serializable
      */
     public $isActive;
 
-    public function getId()
-    {
-        return $this->id;
-    }
+    /**
+     * @ORM\OneToOne(
+     *      targetEntity="App\Entity\UserProfile",
+     *      mappedBy="user",
+     *      orphanRemoval=true,
+     *      cascade={"persist"}
+     * )
+     */
+    private $profile;
 
     public function __construct()
     {
         $this->isActive = true;
     }
 
-    public function getUsername()
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getProfile(): UserProfile
+    {
+        return $this->profile;
+    }
+
+    public function getUsername(): string
     {
         return $this->username;
+    }
+
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->username;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
     public function getSalt()
@@ -58,18 +88,29 @@ class User implements UserInterface, \Serializable
         return null;
     }
 
-    public function getPassword()
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function getPassword(): string
     {
         return $this->password;
     }
 
-    public function getRoles()
+    public function getRoles(): array
     {
         return array('ROLE_USER');
     }
 
     public function eraseCredentials()
     {
+    }
+
+    public function setProfile(UserProfile $profile): void
+    {
+        $profile->setUser($this);
+        $this->profile = $profile;
     }
 
     /** @see \Serializable::serialize() */
