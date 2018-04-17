@@ -98,6 +98,9 @@
     "ocramius/proxy-manager": {
         "version": "2.2.0"
     },
+    "pdepend/pdepend": {
+        "version": "2.5.2"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
@@ -106,6 +109,9 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "0.4.0"
+    },
+    "phpmd/phpmd": {
+        "version": "2.6.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -139,6 +145,9 @@
             "version": "4.0",
             "ref": "e65a105bf4cd5b1b79012ba029954927f05922e8"
         }
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.2.3"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.0.2"
