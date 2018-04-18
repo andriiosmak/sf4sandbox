@@ -31,6 +31,7 @@ class AppFixtures extends Fixture
             $user->setUsername($row['username']);
             $user->setPassword($this->encoder->encodePassword($user, $row['password']));
             $user->setEmail($row['email']);
+            $user->setRoles($row['roles']);
 
             //create a profile
             $profile = new UserProfile();
@@ -52,7 +53,9 @@ class AppFixtures extends Fixture
                 'username' => 'admin',
                 'password' => 'password',
                 'email'    => 'admin@admin.com',
-                'role'     => ['ROLE_ADMIN'],
+                'roles'    => [
+                    'ROLE_ADMIN'
+                ],
                 'profile'  => [
                     'first_name' => 'Admin',
                     'last_name'  => 'Admin',
@@ -62,7 +65,9 @@ class AppFixtures extends Fixture
                 'username' => 'testuser',
                 'password' => 'password',
                 'email'    => 'user@user.com',
-                'role'     => ['ROLE_USER'],
+                'roles'    => [
+                    'ROLE_USER'
+                ],
                 'profile'  => [
                     'first_name' => 'User',
                     'last_name'  => 'User',

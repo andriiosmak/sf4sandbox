@@ -21,22 +21,22 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=25, unique=true)
      */
-    public $username;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=64)
      */
-    public $password;
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=254, unique=true)
      */
-    public $email;
+    private $email;
 
     /**
      * @ORM\Column(name="is_active", type="boolean")
      */
-    public $isActive;
+    private $isActive;
 
     /**
      * @ORM\OneToOne(
@@ -47,6 +47,13 @@ class User implements UserInterface, \Serializable
      * )
      */
     private $profile;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     public function __construct()
     {
@@ -61,6 +68,26 @@ class User implements UserInterface, \Serializable
     public function getProfile(): UserProfile
     {
         return $this->profile;
+    }
+
+    /**
+     * Returns the roles or permissions granted to the user for security.
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+
+        // guarantees that a user always has at least one role for security
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 
     public function getUsername(): string
@@ -96,11 +123,6 @@ class User implements UserInterface, \Serializable
     public function getPassword(): string
     {
         return $this->password;
-    }
-
-    public function getRoles(): array
-    {
-        return array('ROLE_USER');
     }
 
     public function eraseCredentials()
