@@ -13,13 +13,21 @@ easy_admin:
                 title: '%%entity_label%%'
                 fields:
                     - 'name'
-                    - 'title'
+                    - 'parent'
                     - 'is_active'
             form:
                 fields:
                     - 'title'
+                    - { property: 'parent', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Page' } }
                     - 'name'
                     - 'body'
                     - 'is_active'
         User:
             class: App\Entity\User
+            label: 'Users'
+            list:
+                title: '%%entity_label%%'
+                fields:
+                    - 'username'
+                    - 'email'
+                    - 'is_active'

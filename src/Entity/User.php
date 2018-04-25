@@ -102,7 +102,7 @@ class User implements UserInterface, \Serializable
 
     public function getEmail(): string
     {
-        return $this->username;
+        return $this->email;
     }
 
     public function setEmail(string $email): void

@@ -21,6 +21,11 @@ class Page
     private $id;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $parent_id;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -39,6 +44,32 @@ class Page
      * @ORM\Column(type="boolean", options={"default" : 0})
      */
     private $is_active;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Page")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     */
+    private $parent;
+
+    /**
+     * To string
+     *
+     * @return string name
+     */
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
+    public function getParent(): ?Page
+    {
+        return $this->parent;
+    }
+
+    public function setParent(Page $parent): void
+    {
+        $this->parent = $parent;
+    }
 
     public function getId()
     {
