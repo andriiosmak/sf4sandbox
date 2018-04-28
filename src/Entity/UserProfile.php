@@ -42,10 +42,16 @@ class UserProfile
         return $this->id;
     }
 
+    public function getName(): ?string
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
     public function getFirstName(): ?string
     {
         return $this->first_name;
     }
+    
 
     public function setUserId(string $user_id): self
     {

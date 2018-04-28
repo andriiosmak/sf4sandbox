@@ -18,7 +18,7 @@ trait Timestamps
      * @var \DateTime
      * @ORM\Column(type="datetime")
      */
-    private $updated_at;
+    private $updatedAt;
 
     /**
      * Date created at
@@ -26,7 +26,7 @@ trait Timestamps
      * @var \DateTime
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * Set update at
@@ -37,7 +37,7 @@ trait Timestamps
      */
     public function setUpdatedAt(DateTime $value): void
     {
-        $this->updated_at = $value;
+        $this->updatedAt = $value;
     }
 
     /**
@@ -47,7 +47,7 @@ trait Timestamps
      */
     public function getUpdatedAt(): ?DateTime
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
     /**
@@ -59,7 +59,7 @@ trait Timestamps
      */
     public function setCreatedAt($value): void
     {
-        $this->created_at = $value;
+        $this->createdAt = $value;
     }
 
     /**
@@ -69,7 +69,7 @@ trait Timestamps
      */
     public function getCreatedAt(): ?DateTime
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
     /**

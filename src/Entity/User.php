@@ -60,6 +60,16 @@ class User implements UserInterface, \Serializable
         $this->isActive = true;
     }
 
+    /**
+     * To string
+     *
+     * @return string name
+     */
+    public function __toString(): string
+    {
+        return $this->profile->getName();
+    }
+
     public function getId(): int
     {
         return $this->id;

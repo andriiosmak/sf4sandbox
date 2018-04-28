@@ -3,7 +3,7 @@ easy_admin:
     formats:
         date:     'd/m/Y'
         time:     'H:i'
-        datetime: 'd/m/Y H:i:s'
+        datetime: 'd/m/Y h:i A'
         number:   '%.2f'
     entities:
         Page:
@@ -31,3 +31,18 @@ easy_admin:
                     - 'username'
                     - 'email'
                     - 'is_active'
+        Blog:
+            class: App\Entity\Blog
+            label: 'Blog entries'
+            list:
+                title: '%%entity_label%%'
+                fields:
+                    - 'createdAt'
+                    - 'title'
+                    - 'shortContent'
+                    - 'author'
+            form:
+                fields:
+                    - 'title'
+                    - 'shortContent'
+                    - 'content'
