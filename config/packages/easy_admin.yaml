@@ -11,31 +11,6 @@ easy_admin:
         datetime: 'd/m/Y h:i A'
         number:   '%.2f'
     entities:
-        Page:
-            class: App\Entity\Page
-            label: 'Custom pages'
-            list:
-                title: '%%entity_label%%'
-                fields:
-                    - 'name'
-                    - 'parent'
-                    - 'is_active'
-            form:
-                fields:
-                    - 'title'
-                    - { property: 'parent', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Page' } }
-                    - 'name'
-                    - 'body'
-                    - 'is_active'
-        User:
-            class: App\Entity\User
-            label: 'Users'
-            list:
-                title: '%%entity_label%%'
-                fields:
-                    - 'username'
-                    - 'email'
-                    - 'is_active'
         Blog:
             class: App\Entity\Blog
             label: 'Blog entries'
@@ -51,3 +26,28 @@ easy_admin:
                     - 'title'
                     - 'shortContent'
                     - 'content'
+        # Page:
+        #     class: App\Entity\Page
+        #     label: 'Custom pages'
+        #     list:
+        #         title: '%%entity_label%%'
+        #         fields:
+        #             - 'name'
+        #             - 'parent'
+        #             - 'is_active'
+        #     form:
+        #         fields:
+        #             - 'title'
+        #             - { property: 'parent', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\Page' } }
+        #             - 'name'
+        #             - 'body'
+        #             - 'is_active'
+        # User:
+        #     class: App\Entity\User
+        #     label: 'Users'
+        #     list:
+        #         title: '%%entity_label%%'
+        #         fields:
+        #             - 'username'
+        #             - 'email'
+        #             - 'is_active'

@@ -80,7 +80,7 @@ trait Timestamps
      * @ORM\PrePersist
      * @ORM\PreUpdate
      */
-    public function updatedTimestamps(): void
+    public function updateTimestamps(): void
     {
         $this->setUpdatedAt(new DateTime('now'));
 
