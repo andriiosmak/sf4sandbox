@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\Timestamps;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\HasLifecycleCallbacks
@@ -21,17 +22,21 @@ class Blog
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=500)
      * @ORM\Column(type="string", length=500)
      */
     private $shortContent;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
@@ -46,9 +51,55 @@ class Blog
      */
     private $author;
 
-    public function getId()
+    /**
+     * @ORM\Column(type="boolean", nullable=false, options={"default" : false})
+     */
+    private $isDraft;
+
+    /**
+     * Check whether content == null
+     *
+     * @return void
+     *
+     * @ORM\PrePersist
+     */
+    public function checkContent(): void
+    {
+        if (null === $this->getContent()) {
+            $this->isDraft = false;
+        }
+    }
+
+    /**
+     * Get ID
+     *
+     * @return int
+     */
+    public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * Get isDraft flag
+     *
+     * @return int
+     */
+    public function getIsDraft()
+    {
+        return $this->isDraft;
+    }
+
+    /**
+     * Set isDraft flag
+     *
+     * @param bool $value 
+     * 
+     * @return void
+     */
+    public function setIsDraft(bool $value): void
+    {
+        $this->isDraft = $value;
     }
 
     public function getAuthor(): ?User

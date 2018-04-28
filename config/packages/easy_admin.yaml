@@ -21,11 +21,13 @@ easy_admin:
                     - 'title'
                     - 'shortContent'
                     - 'author'
+                    - 'isDraft'
             form:
                 fields:
                     - 'title'
                     - 'shortContent'
                     - 'content'
+                    - 'isDraft'
         # Page:
         #     class: App\Entity\Page
         #     label: 'Custom pages'
