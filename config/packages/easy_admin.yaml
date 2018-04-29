@@ -2,7 +2,7 @@ easy_admin:
     design:
         assets:
             js:
-                - 'bundles/tinymce/tinymce.min.js'
+                - 'tinymce/tinymce.min.js'
                 - 'tinymce/tinymce.init.js'
     site_name: 'Sf4 sandbox'
     formats:
