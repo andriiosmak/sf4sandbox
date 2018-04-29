@@ -259,6 +259,11 @@ p { line-height: 1.9; }
 		height: auto;
 	}
 
+	.tm-blog-img-container {
+		background:none;
+		height: auto;
+	}
+
 	.tm-subtitle { margin-bottom: 40px; }
 	
 	#tmNavbar .navbar-nav .nav-link { padding: 10px 25px; }
