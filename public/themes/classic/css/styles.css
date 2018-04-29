@@ -254,12 +254,7 @@ p { line-height: 1.9; }
 
 @media (max-width: 991px){
 
-	.tm-home-img-container {
-		background:none;
-		height: auto;
-	}
-
-	.tm-blog-img-container {
+	.tm-img-container {
 		background:none;
 		height: auto;
 	}
