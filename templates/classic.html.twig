@@ -10,15 +10,17 @@
         {% endblock %}
     </head>
     <body>
-        {{ include('partials/themes/classic/header.html.twig') }}
-        {% block mainImg %}{% endblock %}
-        <section class="tm-section">
-            <div class="container-fluid">{% block body %}{% endblock %}</div>
-        </section>
-        {% block javascripts %}
-            <script src="{{ asset('themes/classic/css/js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('themes/classic/css/js/jquery-1.11.3.min.js') }}"></script>
-        {% endblock %}
+        <div class="content">
+            {{ include('partials/themes/classic/header.html.twig') }}
+            {% block mainImg %}{% endblock %}
+            <section class="tm-section">
+                <div class="container-fluid">{% block body %}{% endblock %}</div>
+            </section>
+            {% block javascripts %}
+                <script src="{{ asset('themes/classic/js/jquery-1.11.3.min.js') }}"></script>
+                <script src="{{ asset('themes/classic/js/bootstrap.min.js') }}"></script>
+            {% endblock %}
+        </div>
         {{ include('partials/themes/classic/footer.html.twig') }}
     </body>
 </html>
