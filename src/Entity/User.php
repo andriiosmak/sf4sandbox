@@ -39,14 +39,14 @@ class User implements UserInterface, \Serializable
     private $isActive;
 
     /**
-     * @ORM\OneToOne(
-     *      targetEntity="App\Entity\UserProfile",
-     *      mappedBy="user",
-     *      orphanRemoval=true,
-     *      cascade={"persist"}
-     * )
+     * @ORM\Column(type="string", length=50, nullable=false)
      */
-    private $profile;
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     */
+    private $lastName;
 
     /**
      * @var array
@@ -67,17 +67,12 @@ class User implements UserInterface, \Serializable
      */
     public function __toString(): string
     {
-        return $this->profile->getName();
+        return $this->getName();
     }
 
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function getProfile(): UserProfile
-    {
-        return $this->profile;
     }
 
     /**
@@ -159,10 +154,40 @@ class User implements UserInterface, \Serializable
         return $this->isActive;
     }
 
-    public function setProfile(UserProfile $profile): void
+    public function getName(): ?string
     {
-        $profile->setUser($this);
-        $this->profile = $profile;
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setUserId(string $user_id): self
+    {
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(?string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
     }
 
     /** @see \Serializable::serialize() */

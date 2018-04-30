@@ -32,14 +32,8 @@ class AppFixtures extends Fixture
             $user->setPassword($this->encoder->encodePassword($user, $row['password']));
             $user->setEmail($row['email']);
             $user->setRoles($row['roles']);
-
-            //create a profile
-            $profile = new UserProfile();
-            $profile->setFirstName($row['profile']['first_name']);
-            $profile->setLastName($row['profile']['last_name']);
-
-            //assign created profile
-            $user->setProfile($profile);
+            $user->setFirstName($row['firstName']);
+            $user->setLastName($row['lastName']);
             $manager->persist($user);
         }
 
@@ -50,28 +44,24 @@ class AppFixtures extends Fixture
     {
         return [
             [
-                'username' => 'admin',
-                'password' => 'password',
-                'email'    => 'admin@admin.com',
-                'roles'    => [
+                'username'  => 'admin',
+                'password'  => 'password',
+                'email'     => 'admin@admin.com',
+                'firstName' => 'Admin',
+                'lastName'  => 'Admin',
+                'roles'     => [
                     'ROLE_ADMIN'
-                ],
-                'profile'  => [
-                    'first_name' => 'Admin',
-                    'last_name'  => 'Admin',
                 ]
             ],
             [
-                'username' => 'testuser',
-                'password' => 'password',
-                'email'    => 'user@user.com',
-                'roles'    => [
+                'username'  => 'testuser',
+                'password'  => 'password',
+                'email'     => 'user@user.com',
+                'firstName' => 'User',
+                'lastName'  => 'User',
+                'roles'     => [
                     'ROLE_USER'
                 ],
-                'profile'  => [
-                    'first_name' => 'User',
-                    'last_name'  => 'User',
-                ]
             ],
         ];
     }
