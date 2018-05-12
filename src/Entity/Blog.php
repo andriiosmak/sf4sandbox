@@ -23,15 +23,15 @@ class Blog
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(max=255)
-     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=55)
+     * @ORM\Column(type="string", length=55)
      */
     private $title;
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(max=500)
-     * @ORM\Column(type="string", length=500)
+     * @Assert\Length(max=400)
+     * @ORM\Column(type="string", length=400)
      */
     private $shortContent;
 
@@ -41,13 +41,8 @@ class Blog
     private $content;
 
     /**
-     * @ORM\Column(type="integer", nullable=false)
-     */
-    private $authorId;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     private $author;
 
@@ -109,7 +104,7 @@ class Blog
 
     public function setAuthor(User $author): void
     {
-        $this->authorId = $author->getId();
+        $this->author = $author;
     }
 
     public function getTitle(): ?string
