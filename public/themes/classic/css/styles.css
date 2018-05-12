@@ -25,18 +25,6 @@ a:focus {
 	outline: none;
 }
 
-a {
-	color: #000000;
-}
-
-a:hover {
-	color: #cc9900;
-}
-
-a:visited {
-	color: #8c8c8c
-}
-
 h2 { font-size: 2.2rem; }
 .tm-thin-font { font-weight: 300; }
 
@@ -45,6 +33,19 @@ h2 { font-size: 2.2rem; }
 	margin-right: auto;
 	max-width: 1390px;
 	overflow-x: hidden;
+}
+
+.tm-section a {
+	color: #000000;
+}
+
+.tm-section a:hover,
+.tm-site-name:hover {
+	color: #cc9900;
+}
+
+.tm-section a:visited {
+	color: #8c8c8c
 }
 
 .blog-post {
