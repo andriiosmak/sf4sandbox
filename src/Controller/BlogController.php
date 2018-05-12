@@ -17,4 +17,20 @@ class BlogController extends Controller
             'posts' => $repository->getActive()
         ]);
     }
+
+    /**
+     * @Route("/blog/{postId}", name="blog_show", requirements={"postId"="\d+"})
+     */
+    public function show(BlogRepository $repository, int $postId)
+    {
+        $post = $repository->find($postId);
+
+        if (null === $post) {
+            throw $this->createNotFoundException('The blog post does not exist');
+        }
+
+        return $this->render('blog/show.html.twig', [
+            'post' => $post
+        ]);
+    }
 }

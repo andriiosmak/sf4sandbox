@@ -25,6 +25,18 @@ a:focus {
 	outline: none;
 }
 
+a {
+	color: #000000;
+}
+
+a:hover {
+	color: #cc9900;
+}
+
+a:visited {
+	color: #8c8c8c
+}
+
 h2 { font-size: 2.2rem; }
 .tm-thin-font { font-weight: 300; }
 
